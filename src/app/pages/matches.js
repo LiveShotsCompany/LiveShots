@@ -44,7 +44,7 @@ const Matches = () => {
                 </h2>
                 {matches.map((match) => (
                   <Link key={match.id} href={`/pages/${match.id}`}>
-                    <ul className="flex items-center bg-green-600 text-black text-sm border-b-4 border-green-500">
+                    <ul className="flex items-center bg-green-600 hover:bg-green-500 text-black text-sm border-b-4 border-green-500">
                       <div className="flex flex-row items-center w-96 text-white font-bold justify-center space-x-8">
                         <div className="">
                           <li className="flex items-center justify-center">

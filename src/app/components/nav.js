@@ -1,6 +1,10 @@
+"use client";
 import React, { useState } from "react";
-const Nav = () => {
+import { signIn } from "next-auth/react";
+
+const Nav = ({ cookieStore }) => {
   const [isModalOpen, setModalOpen] = useState(false);
+  console.log(cookieStore);
 
   const openModal = () => {
     setModalOpen(true);
@@ -26,12 +30,20 @@ const Nav = () => {
           </a>
         </div>
         <div className="rounded-lg hover:bg-green-500">
-          <a
-            className="group flex items-center space-x-3 rtl:space-x-reverse relative"
-            onClick={openModal}
-          >
-            <img src="/profile.svg" className="h-14" alt="LiveShots" />
-          </a>
+          {cookieStore.length !== 0 ? (
+            <a
+              className="group flex items-center space-x-3 rtl:space-x-reverse relative"
+              onClick={openModal}
+            >
+              <img src="/profile.svg" className="h-14" alt="LiveShots" />
+            </a>
+          ) : (
+            <div className="border-2 border-white p-2 rounded-lg">
+              <button className="text-white font-bold" onClick={() => signIn()}>
+                Sign in
+              </button>
+            </div>
+          )}
         </div>
         {isModalOpen && (
           <div className="fixed flex justify-center items-center bg-gray-800 bg-opacity-50">

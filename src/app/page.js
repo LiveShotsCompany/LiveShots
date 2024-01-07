@@ -1,7 +1,7 @@
-import Nav from "@/app/components/nav";
-import Footer from "@/app/components/footer";
-import Matches from "@/app/pages/matches";
+import Nav from "./components/nav";
+import Footer from "./components/footer";
 import { cookies } from "next/headers";
+import Matches from "./matches";
 
 const Home = () => {
   const cookieStore = cookies();

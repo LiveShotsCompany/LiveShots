@@ -6,7 +6,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html className="h-screen">
-      <body className="h-full">{children}</body>
+      <body className="h-screen">{children}</body>
     </html>
   );
 }

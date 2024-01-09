@@ -1,16 +1,18 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { fixtures } from "./fixtures";
+import { fixtures} from "../fixtures";
 
 const Matches = () => {
   const [matchInfo, setMatchInfo] = useState([]);
-  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedDate, setSelectedDate] = useState("");
 
   useEffect(() => {
     const matchArray = Object.values(fixtures);
     setMatchInfo(matchArray);
-    setSelectedDate('1-7-2024');
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.getDate()}-${currentDate.getMonth() + 1}`; 
+    setSelectedDate(formattedDate);
   }, []);
 
   const matchesByLeague = {};
@@ -25,54 +27,64 @@ const Matches = () => {
   const generateDateButtons = () => {
     const today = new Date();
     const startOfWeek = new Date(today);
-    startOfWeek.setDate(today.getDate() - today.getDay());
+    startOfWeek.setDate(today.getDate() - 7);
 
     const dates = [];
-    console.log(dates)
     const currentDate = new Date(startOfWeek);
 
-    for (let i = 0; i < 7; i++) {
-      const formattedDate = `${
-        currentDate.getMonth() + 1
-      }-${currentDate.getDate()}-${currentDate.getFullYear()}`;
-      dates.push(formattedDate);
+    for (let i = 0; i < 15; i++) {
+      const dayAbbreviation = getDayAbbreviation(currentDate.getDay());
+      const formattedDate = `${currentDate.getDate()}-${currentDate.getMonth() + 1}`;
+      dates.push({ dayAbbreviation, formattedDate });
       currentDate.setDate(currentDate.getDate() + 1);
     }
 
-    return dates.map((date) => (
-      <button
-        key={date}
-        className={`${
-          date === selectedDate ? "bg-green-600" : "bg-green-400"
-        } text-white font-bold w-full hover:bg-green-600 text-[10px] pb-1 pt-1 border-2 border-green-600`}
-        onClick={() => handleDateClick(date)}
-      >
-        {date}
-      </button>
-    ));
+    return (
+        <div className="flex justify-center space-x-2">
+          {dates.map(({ dayAbbreviation, formattedDate }) => (
+              <button
+                  key={formattedDate}
+                  className={`${
+                      formattedDate === selectedDate ? "bg-green-600" : "bg-green-400"
+                  } text-white font-bold w-12 hover:bg-green-600 text-[12px] pb-1 pt-1 border-2 border-green-600`}
+                  onClick={() => handleDateClick(formattedDate)}
+              >
+                <div>
+                  <h1>{formattedDate}</h1>
+                  <h1>{dayAbbreviation}</h1>
+                </div>
+              </button>
+          ))}
+        </div>
+    );
   };
-  
-  console.log(selectedDate)
+
+  const getDayAbbreviation = (dayIndex) => {
+    const daysAbbreviation = ["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"];
+    return daysAbbreviation[dayIndex];
+  };
 
   const handleDateClick = (date) => {
     setSelectedDate(date);
   };
+  
 
   return (
-    <div className="flex justify-center max-h-full bg-gray-200 pt-4 pb-4">
-      <div className="flex flex-col border-2 border-green-600 w-1/7 max-1/2 rounded-lg items-center justify-center bg-gray-100 pt-5 pb-8">
-        <div className="flex justify-center w-full pr-2 pl-4">
-          <div className="flex justify-center w-full space-x-2">
-            {generateDateButtons()}
+    <div className="flex justify-center h-[516px] bg-gray-200 pt-4 pb-4">
+      <div className="flex flex-col border-2 border-green-600 p-4 rounded-lg items-center justify-start bg-gray-100 pt-5 pb-8">
+        <div className="flex justify-center w-96">
+          <div className="flex justify-center w-full">
+            <div className="flex justify-center overflow-auto scrollbar-thin">
+              {generateDateButtons()}
+            </div>
           </div>
         </div>
-        <div className="flex justify-center grid grid-cols-1 pl-6 pt-1 overflow-y-auto scrollbar">
+        <div className="flex flex-col pl-2 pt-2 overflow-auto scrollbar-thin">
           {Object.keys(matchesByLeague).map((leagueId) => {
             const matchesForSelectedDate = matchesByLeague[leagueId].filter(
               (match) =>
-                new Date(match.date).toLocaleDateString() === selectedDate,
+                  match.date === selectedDate + "-2024",
             );
-
             if (matchesForSelectedDate.length === 0) {
               return null;
             }

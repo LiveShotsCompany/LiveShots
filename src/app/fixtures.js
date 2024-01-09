@@ -419,4 +419,15 @@ export const fixtures = [
     date: "3-1-2024",
     favorite: false,
   },
+  {
+    id: 50,
+    home_name: "Heracles",
+    away_name: "Almere City",
+    competitionId: 5,
+    competition: "Eredivisie",
+    time: "17:45",
+    date: "9-1-2024",
+    favorite: false,
+  },
+    
 ];

@@ -429,5 +429,4 @@ export const fixtures = [
     date: "9-1-2024",
     favorite: false,
   },
-    
 ];

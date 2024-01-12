@@ -22,7 +22,10 @@ const Navbar = ({ cookieStore }) => {
     const profileIcon = document.getElementById("profile-icon");
     if (profileIcon) {
       const rect = profileIcon.getBoundingClientRect();
-      setProfileIconPosition({ top: rect.top, left: rect.left });
+      const centerX = rect.left + rect.width / 12;
+      const centerY = rect.top + rect.height / 12;
+
+      setProfileIconPosition({ top: centerY, left: centerX });
     }
     setIsModalOpen(true);
   };
@@ -47,7 +50,7 @@ const Navbar = ({ cookieStore }) => {
 
   return (
     <nav className="bg-green-600 border-b-4 border-white">
-      <div className="flex flex-wrap max-w-screen-xl items-center justify-between mx-auto p-2">
+      <div className="flex flex-wrap max-w-screen-lg items-center justify-between mx-auto p-2">
         <div className="rounded-lg hover:bg-green-500 w-48">
           <a href="" className="flex items-center space-x-1 relative">
             <img
@@ -86,16 +89,16 @@ const Navbar = ({ cookieStore }) => {
               left: profileIconPosition.left,
             }}
           >
-            <div className="flex flex-col items-center bg-green-600 space-y-2 border-2 border-white rounded-lg p-8 rounded-lg">
-              <h1 className="text-white font-bold">Profile:</h1>
+            <div className="flex flex-col items-center bg-green-600 space-y-4 border-4 border-white rounded-lg p-4 rounded-lg">
+              <h1 className="text-white font-bold">Account</h1>
               <div className="border-2 border-white rounded-lg">
                 <button
-                  className="bg-green-600 hover:bg-green-500 text-white px-4 py-2 font-bold rounded-lg"
+                  className="bg-green-600 hover:bg-green-500 text-white p-2 font-bold rounded-lg"
                   onClick={() => {
                     signOut();
                   }}
                 >
-                  Sign Out
+                  Log Out
                 </button>
               </div>
             </div>

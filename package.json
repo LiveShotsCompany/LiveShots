@@ -3,16 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node ./src/app/server.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0",
-    "axios": "^1.6.2",
+    "axios": "^1.6.5",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "football-data-api": "^0.1.4",
     "js-cookie": "^3.0.5",
     "next": "14.0.3",
     "next-auth": "^5.0.0-beta.4",
@@ -22,6 +23,7 @@
     "react-router-dom": "^6.20.1"
   },
   "devDependencies": {
+    "@types/node": "20.10.7",
     "@types/react": "18.2.47",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { fixtures } from "./fixtures";
+import { fixtures } from "../fixtures";
 
 const Matches = () => {
   const [matchInfo, setMatchInfo] = useState([]);

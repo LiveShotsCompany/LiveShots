@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { fixtures } from "@/components/fixtures";
 import Nav from "@/components/nav";
+import Standings from "@/pages/standings";
 
 const Matches = () => {
   const [matchInfo, setMatchInfo] = useState([]);
@@ -85,14 +86,16 @@ const Matches = () => {
   return (
       <div>
         <Nav />
-        <div className="flex justify-center h-[560px] bg-gray-200 pt-4 pb-4">
+        <div className="flex flex-row space-x-14">
+        <Standings/>
+        <div className="flex justify-center h-[560px] pt-4 pb-4">
           <div className="flex flex-col border-2 border-green-600 bg-white p-4 rounded-lg items-center justify-start">
             <div className="flex justify-center w-96 overflow-auto">
               {generateDateButtons()}
             </div>
             <div className="flex flex-col pt-2 overflow-auto">
               <div className="border-2 border-green-600 mb-4">
-                <h2 className="text-base text-base text-center bg-[#28d475] text-white font-bold">
+                <h2 className="text-base text-center bg-[#28d475] text-white font-bold">
                   Favorite Matches
                 </h2>
                 {Object.keys(matchesByLeague).map((leagueId) => {
@@ -197,6 +200,7 @@ const Matches = () => {
               })}
             </div>
           </div>
+        </div>
         </div>
       </div>
   );

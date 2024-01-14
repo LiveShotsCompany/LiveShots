@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import { signIn, signOut } from "next-auth/react";
 
 const Navbar = ({ cookieStore }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -10,13 +9,6 @@ const Navbar = ({ cookieStore }) => {
   });
   const [hasSessionToken, setHasSessionToken] = useState(false);
   const modalRef = useRef(null);
-
-  useEffect(() => {
-    const tokenExists = cookieStore.some(
-      (item) => item[0] === "authjs.session-token",
-    );
-    setHasSessionToken(tokenExists);
-  }, []);
 
   const openModal = () => {
     const profileIcon = document.getElementById("profile-icon");
@@ -64,21 +56,13 @@ const Navbar = ({ cookieStore }) => {
           </a>
         </div>
         <div className="relative rounded-lg hover:bg-green-500">
-          {hasSessionToken ? (
-            <a
-              id="profile-icon"
-              className="group flex items-center space-x-3 rtl:space-x-reverse relative"
-              onClick={openModal}
-            >
-              <img src="/profile.svg" className="h-14" alt="LiveShots" />
-            </a>
-          ) : (
-            <div className="border-2 border-white p-2 rounded-lg">
-              <button className="text-white font-bold" onClick={signIn}>
-                Sign in
-              </button>
-            </div>
-          )}
+          <a
+            id="profile-icon"
+            className="group flex items-center space-x-3 rtl:space-x-reverse relative"
+            onClick={openModal}
+          >
+            <img src="/profile.svg" className="h-14" alt="LiveShots" />
+          </a>
         </div>
         {isModalOpen && (
           <div
@@ -91,16 +75,7 @@ const Navbar = ({ cookieStore }) => {
           >
             <div className="flex flex-col items-center bg-green-600 space-y-4 border-4 border-white rounded-lg p-4 rounded-lg">
               <h1 className="text-white font-bold">Account</h1>
-              <div className="border-2 border-white rounded-lg">
-                <button
-                  className="bg-green-600 hover:bg-green-500 text-white p-2 font-bold rounded-lg"
-                  onClick={() => {
-                    signOut();
-                  }}
-                >
-                  Log Out
-                </button>
-              </div>
+              <div className="border-2 border-white rounded-lg"></div>
             </div>
           </div>
         )}

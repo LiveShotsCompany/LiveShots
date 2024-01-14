@@ -6,7 +6,7 @@ export const fixtures = [
     competitionId: 1,
     competition: "Premier League",
     time: "12:30",
-    date: "4-1-2024",
+    date: "10-1-2024",
     favorite: false,
   },
   {
@@ -16,7 +16,7 @@ export const fixtures = [
     competitionId: 1,
     competition: "Premier League",
     time: "15:00",
-    date: "4-1-2024",
+    date: "10-1-2024",
     favorite: true,
   },
   {
@@ -26,7 +26,7 @@ export const fixtures = [
     competitionId: 2,
     competition: "LaLiga Santander",
     time: "18:30",
-    date: "4-1-2024",
+    date: "10-1-2024",
     favorite: false,
   },
   {
@@ -36,7 +36,7 @@ export const fixtures = [
     competitionId: 3,
     competition: "Ligue 1",
     time: "10:30",
-    date: "5-1-2024",
+    date: "11-1-2024",
     favorite: true,
   },
   {
@@ -46,7 +46,7 @@ export const fixtures = [
     competitionId: 4,
     competition: "Serie A",
     time: "13:30",
-    date: "5-1-2024",
+    date: "11-1-2024",
     favorite: false,
   },
   {
@@ -56,12 +56,12 @@ export const fixtures = [
     competitionId: 5,
     competition: "Eredivisie",
     time: "12:00",
-    date: "5-1-2024",
+    date: "11-1-2024",
     favorite: true,
   },
-  // ... Additional fixtures for 5-1-2024
+  // ... Additional fixtures for 11-1-2024
 
-  // Additional fixtures for 6-1-2024
+  // Additional fixtures for 12-1-2024
   {
     id: 10,
     home_name: "Chelsea",
@@ -69,7 +69,7 @@ export const fixtures = [
     competitionId: 1,
     competition: "Premier League",
     time: "15:30",
-    date: "6-1-2024",
+    date: "12-1-2024",
     favorite: false,
   },
   {
@@ -79,7 +79,7 @@ export const fixtures = [
     competitionId: 2,
     competition: "LaLiga Santander",
     time: "20:00",
-    date: "6-1-2024",
+    date: "12-1-2024",
     favorite: true,
   },
   {
@@ -89,7 +89,7 @@ export const fixtures = [
     competitionId: 3,
     competition: "Ligue 1",
     time: "11:00",
-    date: "6-1-2024",
+    date: "12-1-2024",
     favorite: false,
   },
   {
@@ -99,7 +99,7 @@ export const fixtures = [
     competitionId: 4,
     competition: "Serie A",
     time: "14:30",
-    date: "6-1-2024",
+    date: "12-1-2024",
     favorite: true,
   },
   {
@@ -109,12 +109,12 @@ export const fixtures = [
     competitionId: 5,
     competition: "Eredivisie",
     time: "13:15",
-    date: "6-1-2024",
+    date: "12-1-2024",
     favorite: false,
   },
-  // ... Additional fixtures for 6-1-2024
+  // ... Additional fixtures for 12-1-2024
 
-  // Additional fixtures for 7-1-2024
+  // Additional fixtures for 13-1-2024
   {
     id: 18,
     home_name: "Manchester City",
@@ -122,7 +122,7 @@ export const fixtures = [
     competitionId: 1,
     competition: "Premier League",
     time: "16:30",
-    date: "7-1-2024",
+    date: "13-1-2024",
     favorite: true,
   },
   {
@@ -132,7 +132,7 @@ export const fixtures = [
     competitionId: 2,
     competition: "LaLiga Santander",
     time: "19:45",
-    date: "7-1-2024",
+    date: "13-1-2024",
     favorite: false,
   },
   {
@@ -142,7 +142,7 @@ export const fixtures = [
     competitionId: 3,
     competition: "Ligue 1",
     time: "12:30",
-    date: "7-1-2024",
+    date: "13-1-2024",
     favorite: true,
   },
   {
@@ -152,7 +152,7 @@ export const fixtures = [
     competitionId: 4,
     competition: "Serie A",
     time: "15:00",
-    date: "7-1-2024",
+    date: "13-1-2024",
     favorite: false,
   },
   {
@@ -162,12 +162,12 @@ export const fixtures = [
     competitionId: 5,
     competition: "Eredivisie",
     time: "14:45",
-    date: "7-1-2024",
+    date: "13-1-2024",
     favorite: true,
   },
-  // ... Additional fixtures for 7-1-2024
+  // ... Additional fixtures for 13-1-2024
 
-  // Additional fixtures for 4-1-2024
+  // Additional fixtures for 14-1-2024
   {
     id: 26,
     home_name: "Manchester United",
@@ -175,7 +175,7 @@ export const fixtures = [
     competitionId: 1,
     competition: "Premier League",
     time: "14:00",
-    date: "4-1-2024",
+    date: "14-1-2024",
     favorite: false,
   },
   {
@@ -185,7 +185,7 @@ export const fixtures = [
     competitionId: 2,
     competition: "LaLiga Santander",
     time: "17:30",
-    date: "4-1-2024",
+    date: "14-1-2024",
     favorite: true,
   },
   {
@@ -195,7 +195,7 @@ export const fixtures = [
     competitionId: 3,
     competition: "Ligue 1",
     time: "11:15",
-    date: "4-1-2024",
+    date: "14-1-2024",
     favorite: false,
   },
   {
@@ -205,7 +205,7 @@ export const fixtures = [
     competitionId: 4,
     competition: "Serie A",
     time: "13:45",
-    date: "4-1-2024",
+    date: "14-1-2024",
     favorite: true,
   },
   {
@@ -215,7 +215,7 @@ export const fixtures = [
     competitionId: 5,
     competition: "Eredivisie",
     time: "13:30",
-    date: "4-1-2024",
+    date: "14-1-2024",
     favorite: false,
   },
   {
@@ -225,7 +225,7 @@ export const fixtures = [
     competitionId: 1,
     competition: "Premier League",
     time: "15:30",
-    date: "4-1-2024",
+    date: "14-1-2024",
     favorite: true,
   },
   {
@@ -235,7 +235,7 @@ export const fixtures = [
     competitionId: 1,
     competition: "Premier League",
     time: "18:00",
-    date: "4-1-2024",
+    date: "14-1-2024",
     favorite: false,
   },
   {
@@ -245,7 +245,7 @@ export const fixtures = [
     competitionId: 2,
     competition: "LaLiga Santander",
     time: "20:30",
-    date: "4-1-2024",
+    date: "14-1-2024",
     favorite: true,
   },
   {
@@ -255,7 +255,7 @@ export const fixtures = [
     competitionId: 2,
     competition: "LaLiga Santander",
     time: "14:00",
-    date: "4-1-2024",
+    date: "14-1-2024",
     favorite: false,
   },
   {
@@ -265,7 +265,7 @@ export const fixtures = [
     competitionId: 3,
     competition: "Ligue 1",
     time: "16:30",
-    date: "4-1-2024",
+    date: "14-1-2024",
     favorite: true,
   },
   {
@@ -275,7 +275,7 @@ export const fixtures = [
     competitionId: 3,
     competition: "Ligue 1",
     time: "19:00",
-    date: "4-1-2024",
+    date: "14-1-2024",
     favorite: false,
   },
   {
@@ -285,7 +285,7 @@ export const fixtures = [
     competitionId: 4,
     competition: "Serie A",
     time: "12:45",
-    date: "4-1-2024",
+    date: "14-1-2024",
     favorite: true,
   },
   {
@@ -295,7 +295,7 @@ export const fixtures = [
     competitionId: 4,
     competition: "Serie A",
     time: "15:15",
-    date: "4-1-2024",
+    date: "14-1-2024",
     favorite: false,
   },
   {
@@ -305,7 +305,7 @@ export const fixtures = [
     competitionId: 5,
     competition: "Eredivisie",
     time: "14:30",
-    date: "4-1-2024",
+    date: "14-1-2024",
     favorite: true,
   },
   {
@@ -315,108 +315,7 @@ export const fixtures = [
     competitionId: 5,
     competition: "Eredivisie",
     time: "17:00",
-    date: "4-1-2024",
-    favorite: false,
-  },
-
-  {
-    id: 41,
-    home_name: "Chelsea",
-    away_name: "Tottenham",
-    competitionId: 1,
-    competition: "Premier League",
-    time: "16:30",
-    date: "3-1-2024",
-    favorite: true,
-  },
-  {
-    id: 42,
-    home_name: "Manchester City",
-    away_name: "Liverpool",
-    competitionId: 1,
-    competition: "Premier League",
-    time: "19:00",
-    date: "3-1-2024",
-    favorite: false,
-  },
-  {
-    id: 43,
-    home_name: "Barcelona",
-    away_name: "Real Madrid",
-    competitionId: 2,
-    competition: "LaLiga Santander",
-    time: "14:30",
-    date: "3-1-2024",
-    favorite: true,
-  },
-  {
-    id: 44,
-    home_name: "Atletico Madrid",
-    away_name: "Valencia",
-    competitionId: 2,
-    competition: "LaLiga Santander",
-    time: "17:00",
-    date: "3-1-2024",
-    favorite: false,
-  },
-  {
-    id: 45,
-    home_name: "Paris Saint-Germain",
-    away_name: "Lyon",
-    competitionId: 3,
-    competition: "Ligue 1",
-    time: "11:45",
-    date: "3-1-2024",
-    favorite: true,
-  },
-  {
-    id: 46,
-    home_name: "Nice",
-    away_name: "Marseille",
-    competitionId: 3,
-    competition: "Ligue 1",
-    time: "14:15",
-    date: "3-1-2024",
-    favorite: false,
-  },
-  {
-    id: 47,
-    home_name: "Juventus",
-    away_name: "AC Milan",
-    competitionId: 4,
-    competition: "Serie A",
-    time: "13:00",
-    date: "3-1-2024",
-    favorite: true,
-  },
-  {
-    id: 48,
-    home_name: "Roma",
-    away_name: "Inter Milan",
-    competitionId: 4,
-    competition: "Serie A",
-    time: "15:30",
-    date: "3-1-2024",
-    favorite: false,
-  },
-  {
-    id: 49,
-    home_name: "Sparta",
-    away_name: "Feyenoord",
-    competitionId: 5,
-    competition: "Eredivisie",
-    time: "15:15",
-    date: "3-1-2024",
-    favorite: true,
-  },
-  {
-    id: 50,
-    home_name: "Ajax",
-    away_name: "PSV",
-    competitionId: 5,
-    competition: "Eredivisie",
-    time: "17:45",
-    date: "3-1-2024",
+    date: "14-1-2024",
     favorite: false,
   },
   {

@@ -41,69 +41,58 @@ const Standings = () => {
 
 
     return (
-        <div className="flex flex-col h-96 min-w-96 ml-14 mb-4 mt-4 rounded-lg bg-white border-2 border-green-600">
-            <h2 className="text-lg pl-2 text-xl text-center bg-[#28d475] w-full text-black font-bold">
-                Standings for {leagueId}
-            </h2>
-            <div className="flex justify-center max-w-96 mb-2">
-                <label htmlFor="leagueDropdown" className="mr-2 text-black">
-                    Select League:
-                </label>
-                <select
-                    id="leagueDropdown"
-                    onChange={handleLeagueChange}
-                    value={leagueId || ''}
-                    className="border border-green-500 p-1 text-black"
-                >
-                    <option value="" disabled>Select a league</option>
-                    {availableLeagues.map((league) => (
-                        <option key={league.leagueId} value={league.leagueShortcut}>
-                            {league.leagueName}
-                        </option>
-                    ))}
-                </select>
-            </div>
-            <div className="max-w-96">
+        <div className="flex flex-col h-[400px] mt-4 border-2 border-green-600 bg-white p-4 pt-0 rounded-lg items-center justify-start">
+          <div className="mb-2">
+            <label htmlFor="leagueDropdown" className="mr-2 text-black"></label>
+            <select
+              id="leagueDropdown"
+              onChange={handleLeagueChange}
+              value={leagueId || ''}
+              className="border border-green-500 p-1 text-black flex justify-center w-96 "
+            >
+              <option value="" disabled>Select a league</option>
+              {availableLeagues
+                    .filter(league => [4638,4637,4608].includes(league.leagueId)) // Filter based on desired league IDs
+                    .map((league) => (
+                <option key={league.leagueId} value={league.leagueShortcut}>
+                  {league.leagueName}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="max-w-96 h-80 overflow-auto border-2 border-green-600 bg-white rounded-lg">
             <table className="max-w-full border-collapse border border-green-500">
-                <thead className="bg-green-700 text-white">
+              <thead className="bg-green-700 text-white">
                 <tr>
-                    <th className="border border-green-500 p-2">#</th>
-                    <th className="border border-green-500 p-2">Team</th>
-                    <th className="border border-green-500 p-2">Points</th>
-                    <th className="border border-green-500 p-2">W/D/L</th>
-                    <th className="border border-green-500 p-2">Matches Played</th>
-                    <th className="border border-green-500 p-2">Fav</th>
+                  <th className="border border-green-500 p-2">#</th>
+                  <th className="border border-green-500 p-2">Team</th>
+                  <th className="border border-green-500 p-2">P</th>
+                  <th className="border border-green-500 p-2">W/D/L</th>
+                  <th className="border border-green-500 p-2">M</th>
                 </tr>
-                </thead>
-                <tbody>
+              </thead>
+              <tbody>
                 {standings.map((team, index) => (
-                    <tr key={team.teamInfoId} className="bg-green-600 hover:bg-green-500 text-black text-sm border-b-4 border-green-500">
-                        <td className="border border-green-500 p-2">{index + 1}</td>
-                        <td className="border border-green-500 p-2">
-                            <img
-                                src={team.teamIconUrl}
-                                alt={team.teamName}
-                                className="h-8 w-8 rounded-full"
-                            />
-                            {team.teamName}
-                        </td>
-                        <td className="border border-green-500 p-2">{team.points}</td>
-                        <td className="border border-green-500 p-2">{team.won}W {team.draw}D {team.lost}L</td>
-                        <td className="border border-green-500 p-2">{team.matches} played</td>
-                        <td className="border border-green-500 p-2">
-                            <img
-                                src="/favorite.svg"
-                                alt="favorite"
-                                className="h-6"
-                            />
-                        </td>
-                    </tr>
+                  <tr key={team.teamInfoId} className="bg-green-600 hover:bg-green-500 text-black text-sm border-b-4 border-green-500">
+                    <td className="border border-green-500 p-2">{index + 1}</td>
+                    <td className="flex border border-green-500 p-2">
+                      <img
+                        src={team.teamIconUrl}
+                        alt={team.teamName}
+                        className="h-6 rounded-full"
+                      />
+                      <h1>{team.teamName}</h1>
+                    </td>
+                    <td className="border border-green-500 p-2">{team.points}</td>
+                    <td className="border border-green-500 p-2">{team.won}/{team.draw}/{team.lost}L</td>
+                    <td className="border border-green-500 p-2">{team.matches}</td>
+                  </tr>
                 ))}
-                </tbody>
+              </tbody>
             </table>
-            </div>
+          </div>
         </div>
-    );
-};
-
-export default Standings;
+      );
+    };
+    
+    export default Standings;

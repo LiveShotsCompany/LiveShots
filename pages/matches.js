@@ -84,9 +84,9 @@ const Matches = () => {
   };
 
   return (
-      <div>
+      <div className="bg-gray-200">
         <Nav />
-        <div className="flex flex-row space-x-14">
+        <div className="flex h-[560px] flex-row space-x-14 ml-5">
         <Standings/>
         <div className="flex justify-center h-[560px] pt-4 pb-4">
           <div className="flex flex-col border-2 border-green-600 bg-white p-4 rounded-lg items-center justify-start">

@@ -64,43 +64,45 @@
           ))}
         </select>
       </div>
-      <table className="w-full border-collapse border border-green-500">
-        <thead className="bg-green-700 text-white">
-          <tr>
-            <th className="border border-green-500 p-2">#</th>
-            <th className="border border-green-500 p-2">Team</th>
-            <th className="border border-green-500 p-2">Points</th>
-            <th className="border border-green-500 p-2">W/D/L</th>
-            <th className="border border-green-500 p-2">Matches Played</th>
-            <th className="border border-green-500 p-2">Fav</th>
-          </tr>
-        </thead>
-        <tbody>
-          {standings.map((team, index) => (
-            <tr key={team.teamInfoId} className="bg-green-600 hover:bg-green-500 text-black text-sm border-b-4 border-green-500">
-              <td className="border border-green-500 p-2">{index + 1}</td>
-              <td className="border border-green-500 p-2">
-                <img
-                  src={team.teamIconUrl}
-                  alt={team.teamName}
-                  className="h-8 w-8 rounded-full"
-                />
-                {team.teamName}
-              </td>
-              <td className="border border-green-500 p-2">{team.points}</td>
-              <td className="border border-green-500 p-2">{team.won}W {team.draw}D {team.lost}L</td>
-              <td className="border border-green-500 p-2">{team.matches} played</td>
-              <td className="border border-green-500 p-2">
-                <img
-                  src="/favorite.svg"
-                  alt="favorite"
-                  className="h-6"
-                />
-              </td>
+      <div className="table-container overflow-y-auto max-h-600">
+        <table className="w-full border-collapse border border-green-500">
+          <thead className="bg-green-700 text-white">
+            <tr>
+              <th className="border border-green-500 p-2">#</th>
+              <th className="border border-green-500 p-2">Team</th>
+              <th className="border border-green-500 p-2">Points</th>
+              <th className="border border-green-500 p-2">W/D/L</th>
+              <th className="border border-green-500 p-2">Matches Played</th>
+              <th className="border border-green-500 p-2">Fav</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {standings.map((team, index) => (
+              <tr key={team.teamInfoId} className="bg-green-600 hover:bg-green-500 text-black text-sm border-b-4 border-green-500">
+                <td className="border border-green-500 p-2">{index + 1}</td>
+                <td className="border border-green-500 p-2">
+                  <img
+                    src={team.teamIconUrl}
+                    alt={team.teamName}
+                    className="h-8 w-8 rounded-full"
+                  />
+                  {team.teamName}
+                </td>
+                <td className="border border-green-500 p-2">{team.points}</td>
+                <td className="border border-green-500 p-2">{team.won}W {team.draw}D {team.lost}L</td>
+                <td className="border border-green-500 p-2">{team.matches} played</td>
+                <td className="border border-green-500 p-2">
+                  <img
+                    src="/favorite.svg"
+                    alt="favorite"
+                    className="h-6"
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

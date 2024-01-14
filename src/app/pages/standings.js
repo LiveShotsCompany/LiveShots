@@ -8,6 +8,8 @@
     const [leagueId, setLeagueId] = useState(null);
     const [standings, setStandings] = useState([]);
     const [availableLeagues, setAvailableLeagues] = useState([]);
+    const allowedLeagueIds = ['4608', '4637', '4638']; // Add the IDs you want to allow
+
 
     useEffect(() => {
       // Fetch available leagues and update the state
@@ -18,8 +20,21 @@
       try {
         const response = await axios.get('/api/leagues');
         const leaguesData = response.data;
-        setAvailableLeagues(leaguesData);
-        console.log(leaguesData)
+  
+        console.log('All leagues:', leaguesData);
+  
+        // Check if the leagueId property exists in the API response
+        if (!leaguesData[0]?.leagueId) {
+          console.error('Invalid API response format. Missing leagueId property.');
+          return;
+        }
+  
+        // Filter the fetched leagues based on allowed IDs
+        const filteredLeagues = leaguesData.filter((league) => allowedLeagueIds.includes(league.leagueId));
+  
+        console.log('Filtered leagues:', filteredLeagues);
+  
+        setAvailableLeagues(filteredLeagues);
       } catch (error) {
         console.error('Error fetching available leagues:', error);
       }

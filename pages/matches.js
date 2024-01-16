@@ -47,21 +47,19 @@ const Matches = () => {
 
     for (let i = 0; i < 15; i++) {
       const dayAbbreviation = getDayAbbreviation(currentDate.getDay());
-      const formattedDate = `${currentDate.getDate()}-${
-          currentDate.getMonth() + 1
-      }`;
+      const formattedDate = `${currentDate.getDate()}-${currentDate.getMonth() + 1}`;
       dates.push({ dayAbbreviation, formattedDate });
       currentDate.setDate(currentDate.getDate() + 1);
     }
 
     return (
-        <div className="flex justify-center space-x-2">
+        <div className="flex overflow-x-auto space-x-2 scrollbar-hide">
           {dates.map(({ dayAbbreviation, formattedDate }) => (
               <button
                   key={formattedDate}
                   className={`${
                       formattedDate === selectedDate ? "bg-green-600" : "bg-green-400"
-                  } text-white font-bold w-12 hover:bg-green-600 text-[12px] pb-1 pt-1 border-2 border-green-600`}
+                  } text-white font-bold min-w-12 min-h-12 hover:bg-green-600 text-[12px] pb-1 pt-1 border-2 border-green-600`}
                   onClick={() => handleDateClick(formattedDate)}
               >
                 <div>
@@ -74,6 +72,7 @@ const Matches = () => {
     );
   };
 
+
   const getDayAbbreviation = (dayIndex) => {
     const daysAbbreviation = ["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"];
     return daysAbbreviation[dayIndex];
@@ -84,18 +83,18 @@ const Matches = () => {
   };
 
   return (
-      <div className="bg-gray-200">
+      <div className="min-h-full bg-gray-200">
         <Nav />
-        <div className="flex h-[560px] flex-row space-x-14 ml-5">
+        <div className="flex flex-row space-x-14">
         <Standings/>
         <div className="flex justify-center h-[560px] pt-4 pb-4">
-          <div className="flex flex-col border-2 border-green-600 bg-white p-4 rounded-lg items-center justify-start">
-            <div className="flex justify-center w-96 overflow-auto">
+          <div className="flex flex-col border-2 border-green-600 space-y-2 bg-white p-4 rounded-lg items-center justify-start">
+            <div className="flex justify-center w-96 ">
               {generateDateButtons()}
             </div>
-            <div className="flex flex-col pt-2 overflow-auto">
+            <div className="flex flex-col pt-2 scrollbar-hide overflow-auto">
               <div className="border-2 border-green-600 mb-4">
-                <h2 className="text-base text-center bg-[#28d475] text-white font-bold">
+                <h2 className="text-base text-center bg-green-400 text-white font-bold">
                   Favorite Matches
                 </h2>
                 {Object.keys(matchesByLeague).map((leagueId) => {

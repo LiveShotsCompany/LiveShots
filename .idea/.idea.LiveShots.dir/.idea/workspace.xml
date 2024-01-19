@@ -3,9 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="8875efbc-f712-45df-9369-7470a2e91943" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LiveShots.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LiveShots.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/fixtures.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/fixtures.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_document.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_document.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/matches.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/matches.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/matches/[id].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/matches/[id].js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/standings.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/standings.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
@@ -45,12 +53,13 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="eb4d1a7a-65c6-490b-9036-2915b30a8dde" name="Changes" comment="" />
+      <changelist id="8875efbc-f712-45df-9369-7470a2e91943" name="Changes" comment="" />
       <created>1705239471606</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1705239471606</updated>
       <workItem from="1705239472826" duration="355000" />
+      <workItem from="1705441836114" duration="7111000" />
     </task>
     <servers />
   </component>

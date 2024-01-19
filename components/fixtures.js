@@ -59,9 +59,6 @@ export const fixtures = [
     date: "11-1-2024",
     favorite: true,
   },
-  // ... Additional fixtures for 11-1-2024
-
-  // Additional fixtures for 12-1-2024
   {
     id: 10,
     home_name: "Chelsea",

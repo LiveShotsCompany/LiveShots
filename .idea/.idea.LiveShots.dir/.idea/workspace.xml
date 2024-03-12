@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8875efbc-f712-45df-9369-7470a2e91943" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Opdracht_1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Opdracht_2.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Opdracht_3.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/AllMatches.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/FavoriteMatches.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/api/db.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/api/matches.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/api/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LiveShots.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LiveShots.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/sREADME.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/fixtures.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/matches.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/matches.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/matches/[id].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/matches/[id].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/standings.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/standings.js" afterDir="false" />
-    </list>
+    <list default="true" id="8875efbc-f712-45df-9369-7470a2e91943" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +51,7 @@
       <workItem from="1705673792978" duration="18747000" />
       <workItem from="1706013488403" duration="24126000" />
       <workItem from="1707214966544" duration="905000" />
-      <workItem from="1709044352203" duration="17450000" />
+      <workItem from="1709044352203" duration="17778000" />
     </task>
     <servers />
   </component>

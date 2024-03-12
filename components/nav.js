@@ -7,9 +7,27 @@ const Navbar = ({ cookieStore }) => {
     top: 0,
     left: 0,
   });
-  const [hasSessionToken, setHasSessionToken] = useState(false);
   const modalRef = useRef(null);
+  const [users, setUsers] = useState([]);
 
+  useEffect(() => {
+    async function fetchUsers() {
+      try {
+        const response = await fetch('/api/users');
+        if (!response.ok) {
+          throw new Error('Failed to fetch users');
+        }
+
+        const data = await response.json();
+        setUsers(data);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    }
+
+    fetchUsers();
+  }, []);
+  
   const openModal = () => {
     const profileIcon = document.getElementById("profile-icon");
     if (profileIcon) {
@@ -73,9 +91,13 @@ const Navbar = ({ cookieStore }) => {
               left: profileIconPosition.left,
             }}
           >
-            <div className="flex flex-col items-center bg-green-600 space-y-4 border-4 border-white rounded-lg p-4 rounded-lg">
-              <h1 className="text-white font-bold">Account</h1>
-              <div className="border-2 border-white rounded-lg"></div>
+            <div className="flex flex-col items-center bg-green-500 w-52 h-40 border-2 border-green-700 rounded-lg p-4 rounded-lg">
+              <h1 className="text-white text-center font-bold w-32">Profile:</h1>
+              <div className="flex flex-col items-center">
+              <h1 className="text-white font-bold text-sm p-1">{users[0].username}</h1>
+              <h1 className="text-white font-bold text-sm p-1">{users[0].email}</h1>
+              <button className="text-white font-bold border-2 w-32 border-green-700 text-sm p-2 m-1">Log Out</button>
+              </div>
             </div>
           </div>
         )}

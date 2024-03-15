@@ -1,7 +1,7 @@
 // pages/matches.js
 "use client";
 import React, { useEffect, useState } from "react";
-import Nav from "@/components/nav";
+import Nav from "@/pages/nav";
 import Standings from "@/pages/standings";
 import AllMatches from "@/components/AllMatches";
 import FavoriteMatches from "@/components/FavoriteMatches";

@@ -6,6 +6,8 @@ LiveShots is a football app designed to provide users with the ability to view f
 
 ## Functionalities
 
+Alle functionaliteit uit de briefing halen
+
 1. **User Registration and Login:**
    - Users can create an account with their personal information.
    - Registered users can log in with their unique credentials.
@@ -22,7 +24,11 @@ LiveShots is a football app designed to provide users with the ability to view f
 4. **Match Details:**
    - Users can click on a match to view more details, such as line-ups, goal scorers, and other relevant information.
 
+
+
 ## User Stories
+
+Waarom, uren meer criteria
 
 1. **User Registration and Login:**
    - As a user, I want to create an account to access personalized features.
@@ -40,6 +46,8 @@ LiveShots is a football app designed to provide users with the ability to view f
    - As a user, I want to click on a match to see more details for a comprehensive view of the match.
 
 ## Definition of Done
+
+Meer info
 
 A user story is considered 'done' if:
 - The code is written and tested.
@@ -66,5 +74,8 @@ A user story is considered 'done' if:
 
 
 ## Voortgangsbewaking
+
+Waarom niet alle functionaliteiten
+Alle user stories op board
 
 

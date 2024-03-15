@@ -26,6 +26,25 @@ const Home = () => {
             setError(error.message);
         }
     };
+
+    const handleSignUp = async () => {
+        try {
+            const response = await fetch('/api/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ e_mail: email, password: password })
+            });
+
+            if (!response.ok) {
+                const data = await response.json();
+                throw new Error(data.message || 'Sign-up failed');
+            }
+        } catch (error) {
+            setError(error.message);
+        }
+    };
     
 
     return (
@@ -72,6 +91,12 @@ const Home = () => {
                                     className="w-full text-white bg-green-600 hover:bg-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                 >
                                     Sign in
+                                </button>
+                                <button
+                                    onClick={handleSignUp}
+                                    className="w-full text-white bg-blue-600 hover:bg-00 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                                >
+                                    Sign Up   
                                 </button>
                             </div>
                         </div>

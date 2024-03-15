@@ -7,7 +7,7 @@ export default async function handler(req, res) {
         switch (method) {
             case 'GET':
                 const [rows] = await pool.query('SELECT * FROM users WHERE email = ?', ['daniel.r.gumbs@gmail.com']);
-                res.status(200).json(rows);
+                res.status(200).json({password : rows[0].Id});
                 break;
             case 'POST':
                 const { e_mail, password } = body;
@@ -19,12 +19,13 @@ export default async function handler(req, res) {
                     return;
                 }
 
-                const [user] = userRows;
-
+                const user = userRows[0];
+                
                 // Compare passwords
-                const passwordMatch = comparePasswords(password, user.password);
+                const passwordMatch = await comparePasswords(password, user.Password);
+                
                 if (passwordMatch !== true) {
-                    res.status(401).json({ message: 'Invalid password' });
+                    res.status(401).json({passwordMatch: passwordMatch});
                 }
 
                 // Passwords match, login successful

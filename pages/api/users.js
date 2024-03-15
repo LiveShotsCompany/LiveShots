@@ -29,7 +29,7 @@ export default async function handler(req, res) {
                 }
 
                 // Passwords match, login successful
-                res.status(200).json([user]);
+                res.status(200).json('Login Succesfully');
                 break;
             default:
                 res.status(405).json({ message: 'Method Not Allowed' });

@@ -7,12 +7,10 @@ const Standings = () => {
   const [availableLeagues, setAvailableLeagues] = useState([]);
 
   useEffect(() => {
-    // Fetch available leagues and update the state
     fetchAvailableLeagues();
   }, []);
 
   useEffect(() => {
-    // Set a default league when the component mounts
     if (availableLeagues.length > 0) {
       const defaultLeagueId = availableLeagues[0].leagueShortcut;
       setLeagueId(defaultLeagueId);
@@ -88,7 +86,7 @@ const Standings = () => {
                 key={team.teamInfoId}
                 className="bg-green-600 text-xs border-b-4 border-green-500"
               >
-                <td className="text-white font-bold border-r-4 border-green-500 p-2">
+                <td className="text-center text-white font-bold border-r-4 border-green-500 p-2">
                   {index + 1}
                 </td>
                 <td className="flex pt-2 space-x-1 pl-1 pr-1">

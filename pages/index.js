@@ -1,11 +1,12 @@
-import Nav from "@/pages/nav";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 const Home = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const router = useRouter();
 
     const handleSignIn = async () => {
         try {
@@ -21,7 +22,7 @@ const Home = () => {
                 const data = await response.json();
                 throw new Error(data.message || 'Login failed');
             }
-            
+            await router.push('/matches')
         } catch (error) {
             setError(error.message);
         }
@@ -41,6 +42,7 @@ const Home = () => {
                 const data = await response.json();
                 throw new Error(data.message || 'Sign-up failed');
             }
+            await router.push('/matches')
         } catch (error) {
             setError(error.message);
         }
@@ -49,8 +51,8 @@ const Home = () => {
 
     return (
         <div className="">
-            <Nav />
-            <section className="max-h-[845px] bg-gray-100 dark:bg-gray-900">
+            <section className="bg-gray-100">
+                <div className="w-full h-20 bg-green-600"></div>
                 <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                     <a href="/matches" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"></a>
                     <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -85,7 +87,7 @@ const Home = () => {
                                         required
                                     />
                                 </div>
-                                {error && <p className="text-red-500">{error}</p>}
+                                {error && <p className="text-red-500 font-bold">{error}</p>}
                                 <button
                                     onClick={handleSignIn}
                                     className="w-full text-white bg-green-600 hover:bg-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"

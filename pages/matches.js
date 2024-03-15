@@ -5,12 +5,14 @@ import Nav from "@/pages/nav";
 import Standings from "@/pages/standings";
 import AllMatches from "@/components/AllMatches";
 import FavoriteMatches from "@/components/FavoriteMatches";
+import { useRouter } from "next/router";
 
 const Matches = () => {
   const [matches, setMatches] = useState([]);
   const [matchInfo, setMatchInfo] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
   const [favoriteMatches, setFavoriteMatches] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     async function fetchMatches() {

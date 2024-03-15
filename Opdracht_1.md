@@ -61,6 +61,7 @@ A user story is considered 'done' if:
 2. **Match Overview - 12hours**
 
 ![img.png](img.png)
+![img_1.png](img_1.png)
 
 ### Sprint 2 (Week 2):
 

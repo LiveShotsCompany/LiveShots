@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import Navbar from "@/pages/nav";
 
 const Home = () => {
 
@@ -7,7 +9,7 @@ const Home = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
-
+    
     const handleSignIn = async () => {
         try {
             const response = await fetch('/api/users', {
@@ -22,7 +24,7 @@ const Home = () => {
                 const data = await response.json();
                 throw new Error(data.message || 'Login failed');
             }
-            await router.push('/matches')
+            await router.push('/matches');
         } catch (error) {
             setError(error.message);
         }
@@ -42,7 +44,7 @@ const Home = () => {
                 const data = await response.json();
                 throw new Error(data.message || 'Sign-up failed');
             }
-            await router.push('/matches')
+            await router.push('/matches');
         } catch (error) {
             setError(error.message);
         }
@@ -51,15 +53,20 @@ const Home = () => {
 
     return (
         <div className="">
-            <section className="bg-gray-100">
-                <div className="w-full h-20 bg-green-600"></div>
+            <section className="bg-gray-100 border-2 border-white">
                 <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                     <a href="/matches" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"></a>
-                    <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-                        <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                    <div className="w-full bg-white rounded-lg shadow dark:border mb-32 md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                        <div className="p-6 space-y-4 md:space-y-4 sm:p-8">
+                            <div className="flex flex-col space-y-4">
                             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                                Sign in to your account
+                                Sign in to your LiveShots account
                             </h1>
+                                <div className="space-x-1.5">
+                                <Link className="text-center font-normal" href="/matches">Or log in without a account:</Link>
+                                <Link className="text-center text-green-400 font-bold" href="/matches">Click Here</Link>
+                                </div>
+                            </div>
                             <div className="space-y-4 md:space-y-6">
                                 <div>
                                     <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
@@ -88,6 +95,7 @@ const Home = () => {
                                     />
                                 </div>
                                 {error && <p className="text-red-500 font-bold">{error}</p>}
+                                <div className="flex space-x-4">
                                 <button
                                     onClick={handleSignIn}
                                     className="w-full text-white bg-green-600 hover:bg-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
@@ -96,10 +104,9 @@ const Home = () => {
                                 </button>
                                 <button
                                     onClick={handleSignUp}
-                                    className="w-full text-white bg-blue-600 hover:bg-00 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                >
-                                    Sign Up   
+                                    className="w-full text-white bg-blue-600 hover:bg-00 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign Up   
                                 </button>
+                                </div>
                             </div>
                         </div>
                     </div>

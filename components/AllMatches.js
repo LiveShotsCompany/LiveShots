@@ -1,21 +1,25 @@
-// components/AllMatches.js
-import React from "react";
 import Link from "next/link";
 
-const AllMatches = ({ matchesByLeague, selectedDate, handleToggleFavorite }) => {
+const AllMatches = ({ matchesByLeague, selectedDate }) => {
     return (
         <div>
-            {Object.keys(matchesByLeague).map((leagueId) => {
-                const matchesForSelectedDate = matchesByLeague[leagueId].filter(
-                    (match) => match.date === selectedDate + "-2024"
+            {Object.entries(matchesByLeague).map(([competitionId, matches]) => {
+                const matchesForSelectedDate = matches.filter(
+                    (match) => {
+                        const matchDate = new Date(match.date);
+                        const formattedMatchDate = `${matchDate.getDate()}-${matchDate.getMonth() + 1}`;
+                        return formattedMatchDate === selectedDate;
+                    }
                 );
+
                 if (matchesForSelectedDate.length === 0) {
                     return null;
                 }
+
                 return (
-                    <div className="mb-4 border-2 border-green-600" key={leagueId}>
+                    <div className="mb-4 border-2 border-green-600" key={competitionId}>
                         <h2 className="text-base text-center bg-[#28d475] w-full text-white font-bold">
-                            {matchesForSelectedDate[0].competition}
+                            {matches[0].competitionName}
                         </h2>
                         {matchesForSelectedDate.map((match) => (
                             <ul
@@ -29,25 +33,20 @@ const AllMatches = ({ matchesByLeague, selectedDate, handleToggleFavorite }) => 
                                     >
                                         <div className="">
                                             <li className="flex items-center justify-center">
-                                                {match.time}
+                                                {match.time.split(":").slice(0, 2).join(":")}
                                             </li>
                                         </div>
                                         <div>
                                             <li className="flex items-center justify-center">
-                                                {match.home_name}
+                                                {match.teams && match.teams[0] && match.teams[0].name}
                                             </li>
                                             <li className="flex items-center justify-center">
-                                                {match.away_name}
-                                            </li>
-                                        </div>
-                                        <div>
-                                            <li className="flex items-center justify-center">
-                                                {match.score}
+                                                {match.teams && match.teams[1] && match.teams[1].name}
                                             </li>
                                         </div>
                                     </Link>
                                     <li>
-                                        <button className="" onClick={() => handleToggleFavorite(match.id)}>
+                                        <button className="ml-8">
                                             <img
                                                 src={match.favorite ? 'favorite-1.svg' : 'favorite.svg'}
                                                 alt=""

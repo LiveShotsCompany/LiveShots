@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Nav from "@/components/nav";
+import Nav from "@/pages/nav";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 

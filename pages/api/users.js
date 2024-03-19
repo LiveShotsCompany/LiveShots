@@ -6,8 +6,8 @@ export default async function handler(req, res) {
         const { method, body } = req;
         switch (method) {
             case 'GET':
-                const [rows] = await pool.query('SELECT * FROM users WHERE email = ?', ['daniel.r.gumbs@gmail.com']);
-                res.status(200).json({password : rows[0].Id});
+                const [rows] = await pool.query('SELECT * FROM users');
+                res.status(200).json({rows});
                 break;
             case 'POST':
                 const { e_mail, password } = body;
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
                 }
 
                 // Passwords match, login successful
-                res.status(200).json('Login Succesfully');
+                res.status(200).json(user);
                 break;
             default:
                 res.status(405).json({ message: 'Method Not Allowed' });

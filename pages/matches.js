@@ -1,18 +1,10 @@
-// pages/matches.js
-"use client";
 import React, { useEffect, useState } from "react";
 import Nav from "@/pages/nav";
 import Standings from "@/pages/standings";
 import AllMatches from "@/components/AllMatches";
-import FavoriteMatches from "@/components/FavoriteMatches";
-import { useRouter } from "next/router";
-
 const Matches = () => {
   const [matches, setMatches] = useState([]);
-  const [matchInfo, setMatchInfo] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
-  const [favoriteMatches, setFavoriteMatches] = useState([]);
-  const router = useRouter();
 
   useEffect(() => {
     async function fetchMatches() {
@@ -32,26 +24,18 @@ const Matches = () => {
     fetchMatches();
   }, []);
 
-  useEffect(() => {
-    const firstMatch = matches.length > 0 ? matches[0] : null;
-
-    if (firstMatch && !selectedDate) {
-      const currentDate = new Date();
-      const formattedDate = `${currentDate.getDate()}-${
-          currentDate.getMonth() + 1
-      }`;
-      setMatchInfo(matches);
-      setSelectedDate(formattedDate);
-    }
-  }, [matches, selectedDate]);
 
   const matchesByLeague = {};
 
-  matchInfo.forEach((match) => {
-    if (!matchesByLeague[match.competitionId]) {
-      matchesByLeague[match.competitionId] = [];
-    }
-    matchesByLeague[match.competitionId].push(match);
+  Object.keys(matches).forEach(competitionId => {
+    const matchesForCompetition = matches[competitionId];
+
+    matchesForCompetition.forEach(match => {
+      if (!matchesByLeague[competitionId]) {
+        matchesByLeague[competitionId] = [];
+      }
+      matchesByLeague[competitionId].push(match);
+    });
   });
 
   const generateDateButtons = () => {
@@ -100,41 +84,6 @@ const Matches = () => {
     setSelectedDate(date);
   };
 
-  const handleToggleFavorite = async (matchId) => {
-    try {
-      const isCurrentlyFavorite = favoriteMatches.includes(matchId);
-      setMatches((prevMatches) =>
-          prevMatches.map((match) =>
-              match.id === matchId
-                  ? { ...match, favorite: !isCurrentlyFavorite }
-                  : match
-          )
-      );
-      console.log(isCurrentlyFavorite)
-      const response = await fetch('/api/matches', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          matchId,
-          isFavorite: isCurrentlyFavorite,
-        }),
-      });
-
-      setFavoriteMatches((prevFavorites) => {
-        if (isCurrentlyFavorite) {
-          return prevFavorites.filter((id) => id !== matchId);
-        } else {
-          return [...prevFavorites, matchId];
-        }
-      });
-    } catch (error) {
-      console.error('Error updating favorite status:', error);
-    }
-  };
-
-
   return (
       <div className="bg-gray-200">
         <Nav />
@@ -146,16 +95,9 @@ const Matches = () => {
                 {generateDateButtons()}
               </div>
               <div className="flex flex-col pt-2 scrollbar-hide overflow-auto">
-                <FavoriteMatches
-                    matchesByLeague={matchesByLeague}
-                    selectedDate={selectedDate}
-                    favoriteMatches={favoriteMatches}
-                    handleToggleFavorite={handleToggleFavorite}
-                />
                 <AllMatches
                     matchesByLeague={matchesByLeague}
                     selectedDate={selectedDate}
-                    handleToggleFavorite={handleToggleFavorite}
                 />
               </div>
             </div>

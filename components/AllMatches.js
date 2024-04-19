@@ -1,6 +1,73 @@
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
-const AllMatches = ({ matchesByLeague, selectedDate }) => {
+const AllMatches = ({ matchesByLeague, selectedDate, userId }) => {
+    const [favoriteMatches, setFavoriteMatches] = useState([]);
+
+    useEffect(() => {
+        const fetchFavoriteMatches = async () => {
+            try {
+                const response = await fetch("/api/user-matches", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ userId })
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to fetch favorite matches");
+                }
+
+                const data = await response.json();
+                setFavoriteMatches(data.favoriteMatches);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchFavoriteMatches();
+    }, [userId]);
+
+    const isMatchFavorited = (matchId) => favoriteMatches.includes(matchId);
+
+    const handleToggleFavorite = async (matchId, homeTeam, awayTeam) => {
+        try {
+            if (isMatchFavorited(matchId)) {
+                const response = await fetch("/api/remove-favorite", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ matchId, userId })
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to remove favorite match");
+                }
+
+                // Remove matchId from favoriteMatches state
+                setFavoriteMatches(prevState => prevState.filter(id => id !== matchId));
+            } else {
+                const response = await fetch("/api/favorite", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ matchId, homeTeam, awayTeam, userId })
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to favorite match");
+                }
+
+                // Add matchId to favoriteMatches state
+                setFavoriteMatches(prevState => [...prevState, matchId]);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     return (
         <div>
             {Object.entries(matchesByLeague).map(([competitionId, matches]) => {
@@ -23,33 +90,31 @@ const AllMatches = ({ matchesByLeague, selectedDate }) => {
                         </h2>
                         {matchesForSelectedDate.map((match) => (
                             <ul
-                                className={`flex items-center bg-green-600 hover:bg-green-500 text-black text-sm border-b-4 border-green-500`}
                                 key={match.id}
+                                className={`flex items-center bg-green-600 hover:bg-green-500 text-black text-sm border-b-4 border-green-500`}
                             >
-                                <div className="flex flex-row items-center justify-center w-96 text-white font-bold">
-                                    <Link
-                                        className="flex flex-row items-center space-x-8"
-                                        href={`/matches/${match.id}`}
-                                    >
-                                        <div className="">
-                                            <li className="flex items-center justify-center">
-                                                {match.time.split(":").slice(0, 2).join(":")}
-                                            </li>
-                                        </div>
-                                        <div>
-                                            <li className="flex items-center justify-center">
-                                                {match.teams && match.teams[0] && match.teams[0].name}
-                                            </li>
-                                            <li className="flex items-center justify-center">
-                                                {match.teams && match.teams[1] && match.teams[1].name}
-                                            </li>
-                                        </div>
-                                    </Link>
+                                <div className="flex flex-row items-center w-96 text-white font-bold justify-center space-x-8">
+                                    <div className="">
+                                        <li className="flex items-center justify-center">
+                                            {match.time.split(":").slice(0, 2).join(":")}
+                                        </li>
+                                    </div>
+                                    <div>
+                                        <li className="flex items-center justify-center">
+                                            {match.teams && match.teams[0] && match.teams[0].name}
+                                        </li>
+                                        <li className="flex items-center justify-center">
+                                            {match.teams && match.teams[1] && match.teams[1].name}
+                                        </li>
+                                    </div>
                                     <li>
-                                        <button className="ml-8">
+                                        <button
+                                            className=""
+                                            onClick={() => handleToggleFavorite(match.id, match.teams[0].name, match.teams[1].name)}
+                                        >
                                             <img
-                                                src={match.favorite ? 'favorite-1.svg' : 'favorite.svg'}
-                                                alt=""
+                                                src={isMatchFavorited(match.id) ? "/favorite-1.svg" : "/favorite.svg"}
+                                                alt="favorite"
                                                 className="h-6"
                                             />
                                         </button>

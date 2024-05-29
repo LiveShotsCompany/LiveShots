@@ -9,30 +9,29 @@ const Matches = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [favoriteMatches, setFavoriteMatches] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userId, setUserId] = useState("")
+  const [userId, setUserId] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
-    setUserId(userId)
+    setUserId(userId);
     if (token) {
       setIsLoggedIn(true);
     }
   }, []);
-  
-  
+
   useEffect(() => {
     async function fetchMatches() {
       try {
-        const response = await fetch('/api/matches');
+        const response = await fetch("/api/matches");
         if (!response.ok) {
-          throw new Error('Failed to fetch matches');
+          throw new Error("Failed to fetch matches");
         }
 
         const data = await response.json();
         setMatches(data);
       } catch (error) {
-        console.error('Error fetching matches:', error);
+        console.error("Error fetching matches:", error);
       }
     }
 
@@ -45,9 +44,9 @@ const Matches = () => {
         const response = await fetch("/api/user-matches", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify({ userId })
+          body: JSON.stringify({ userId }),
         });
 
         if (!response.ok) {
@@ -64,13 +63,12 @@ const Matches = () => {
     fetchFavoriteMatches();
   }, [userId]);
 
-
   const matchesByLeague = {};
 
-  Object.keys(matches).forEach(competitionId => {
+  Object.keys(matches).forEach((competitionId) => {
     const matchesForCompetition = matches[competitionId];
 
-    matchesForCompetition.forEach(match => {
+    matchesForCompetition.forEach((match) => {
       if (!matchesByLeague[competitionId]) {
         matchesByLeague[competitionId] = [];
       }
@@ -89,29 +87,29 @@ const Matches = () => {
     for (let i = 0; i < 15; i++) {
       const dayAbbreviation = getDayAbbreviation(currentDate.getDay());
       const formattedDate = `${currentDate.getDate()}-${
-          currentDate.getMonth() + 1
+        currentDate.getMonth() + 1
       }`;
       dates.push({ dayAbbreviation, formattedDate });
       currentDate.setDate(currentDate.getDate() + 1);
     }
 
     return (
-        <div className="flex overflow-x-auto space-x-2 scrollbar-hide">
-          {dates.map(({ dayAbbreviation, formattedDate }) => (
-              <button
-                  key={formattedDate}
-                  className={`${
-                      formattedDate === selectedDate ? "bg-green-600" : "bg-green-400"
-                  } text-white font-bold min-w-12 min-h-12 hover:bg-green-600 text-[12px] pb-1 pt-1 border-2 border-green-600`}
-                  onClick={() => handleDateClick(formattedDate)}
-              >
-                <div>
-                  <h1>{formattedDate}</h1>
-                  <h1>{dayAbbreviation}</h1>
-                </div>
-              </button>
-          ))}
-        </div>
+      <div className="flex overflow-x-auto space-x-2 scrollbar-hide">
+        {dates.map(({ dayAbbreviation, formattedDate }) => (
+          <button
+            key={formattedDate}
+            className={`${
+              formattedDate === selectedDate ? "bg-green-600" : "bg-green-400"
+            } text-white font-bold min-w-12 min-h-12 hover:bg-green-600 text-[12px] pb-1 pt-1 border-2 border-green-600`}
+            onClick={() => handleDateClick(formattedDate)}
+          >
+            <div>
+              <h1>{formattedDate}</h1>
+              <h1>{dayAbbreviation}</h1>
+            </div>
+          </button>
+        ))}
+      </div>
     );
   };
 
@@ -125,43 +123,43 @@ const Matches = () => {
   };
 
   return (
-      <div className="bg-gray-200">
-        <Nav />
-        <div className="flex flex-row space-x-20">
-          <Standings />
-          <div className="flex justify-center h-[560px] mt-6 pb-4">
-            <div className="flex flex-col border-2 border-green-600 space-y-2 bg-white p-4 rounded-lg items-center justify-start">
-              <div className="flex justify-center w-96 ">
-                {generateDateButtons()}
-              </div>
-              <div className="flex flex-col pt-2 scrollbar-hide overflow-auto">
-                {!isLoggedIn ? (
-                    <AllMatches
-                        matchesByLeague={matchesByLeague}
-                        selectedDate={selectedDate}
-                        favoriteMatches={favoriteMatches}
-                    />
-                ) : (
-                    <>
-                      <FavoriteMatches
-                          selectedDate={selectedDate}
-                          favoriteMatches={favoriteMatches}
-                          userId={userId}
-                      />
-                      <AllMatches
-                          matchesByLeague={matchesByLeague}
-                          selectedDate={selectedDate}
-                          favoriteMatches={favoriteMatches}
-                          setFavoriteMatches={setFavoriteMatches}
-                          userId={userId}
-                      />
-                    </>
-                )}
-              </div>
+    <div className="bg-gray-300">
+      <Nav />
+      <div className="flex flex-row space-x-20">
+        <Standings />
+        <div className="flex justify-center h-[560px] mt-6 pb-4">
+          <div className="flex flex-col border-2 border-green-600 space-y-2 bg-gray-200 p-4 rounded-lg items-center justify-start">
+            <div className="flex justify-center w-96 ">
+              {generateDateButtons()}
+            </div>
+            <div className="flex flex-col pt-2 scrollbar-hide overflow-auto">
+              {!isLoggedIn ? (
+                <AllMatches
+                  matchesByLeague={matchesByLeague}
+                  selectedDate={selectedDate}
+                  favoriteMatches={favoriteMatches}
+                />
+              ) : (
+                <>
+                  <FavoriteMatches
+                    selectedDate={selectedDate}
+                    favoriteMatches={favoriteMatches}
+                    userId={userId}
+                  />
+                  <AllMatches
+                    matchesByLeague={matchesByLeague}
+                    selectedDate={selectedDate}
+                    favoriteMatches={favoriteMatches}
+                    setFavoriteMatches={setFavoriteMatches}
+                    userId={userId}
+                  />
+                </>
+              )}
             </div>
           </div>
         </div>
       </div>
+    </div>
   );
 };
 

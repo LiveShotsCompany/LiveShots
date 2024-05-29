@@ -2,19 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8875efbc-f712-45df-9369-7470a2e91943" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/img_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/api/favorite.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/api/remove-favorite.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/api/user-favorite-matches.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/api/user-matches.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/api/matchdetails.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/api/toggle-favorite.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LiveShots.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LiveShots.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Opdracht_1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Opdracht_1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/AllMatches.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/AllMatches.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/FavoriteMatches.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/FavoriteMatches.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/favorite.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/favorite.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/matches.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/matches.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/remove-favorite.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/remove-favorite.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/testConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/testConnection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/user-favorite-matches.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/user-favorite-matches.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/user-matches.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/user-matches.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/api/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/matches.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/matches.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/matches/[id].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/matches/[id].js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/standings.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/standings.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +30,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/package-lock.json" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/bitacedamy/unity/CashingSimulator/Assets/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -70,6 +78,12 @@
       <workItem from="1710497306384" duration="7091000" />
       <workItem from="1710883749651" duration="29895000" />
       <workItem from="1712146416070" duration="3691000" />
+      <workItem from="1713882672956" duration="7865000" />
+      <workItem from="1713953303519" duration="17828000" />
+      <workItem from="1714736530629" duration="761000" />
+      <workItem from="1716202882674" duration="3005000" />
+      <workItem from="1716291412782" duration="6352000" />
+      <workItem from="1716472617101" duration="1519000" />
     </task>
     <servers />
   </component>

@@ -5,6 +5,8 @@ const Navbar = () => {
     const router = useRouter();
     
     const handleSignOut  = async () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userId');
         await router.push('/')
     };
   

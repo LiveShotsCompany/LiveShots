@@ -28,8 +28,8 @@ export default async function handler(req, res) {
                     res.status(401).json({passwordMatch: passwordMatch});
                 }
 
-                // Passwords match, login successful
-                res.status(200).json(user);
+                const token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+                res.status(200).json({ user, token });
                 break;
             default:
                 res.status(405).json({ message: 'Method Not Allowed' });

@@ -9,22 +9,29 @@ const Home = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
-    
+
     const handleSignIn = async () => {
         try {
-            const response = await fetch('/api/users', {
-                method: 'POST',
+            const response = await fetch("/api/users", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ e_mail: email, password: password })
             });
 
             if (!response.ok) {
                 const data = await response.json();
-                throw new Error(data.message || 'Login failed');
+                throw new Error(data.message || "Login failed");
             }
-            await router.push('/matches');
+
+            const { user, token } = await response.json();
+            
+            if (token) {
+                localStorage.setItem("token", token);
+                localStorage.setItem("userId", user.Id);
+                await router.push("/matches");
+            }
         } catch (error) {
             setError(error.message);
         }

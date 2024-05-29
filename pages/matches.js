@@ -2,10 +2,25 @@ import React, { useEffect, useState } from "react";
 import Nav from "@/pages/nav";
 import Standings from "@/pages/standings";
 import AllMatches from "@/components/AllMatches";
+import FavoriteMatches from "@/components/FavoriteMatches";
+
 const Matches = () => {
   const [matches, setMatches] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
+  const [favoriteMatches, setFavoriteMatches] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userId, setUserId] = useState("")
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
+    setUserId(userId)
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+  
+  
   useEffect(() => {
     async function fetchMatches() {
       try {
@@ -23,6 +38,31 @@ const Matches = () => {
 
     fetchMatches();
   }, []);
+
+  useEffect(() => {
+    const fetchFavoriteMatches = async () => {
+      try {
+        const response = await fetch("/api/user-matches", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ userId })
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch favorite matches");
+        }
+
+        const data = await response.json();
+        setFavoriteMatches(data.favoriteMatches);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchFavoriteMatches();
+  }, [userId]);
 
 
   const matchesByLeague = {};
@@ -95,10 +135,28 @@ const Matches = () => {
                 {generateDateButtons()}
               </div>
               <div className="flex flex-col pt-2 scrollbar-hide overflow-auto">
-                <AllMatches
-                    matchesByLeague={matchesByLeague}
-                    selectedDate={selectedDate}
-                />
+                {!isLoggedIn ? (
+                    <AllMatches
+                        matchesByLeague={matchesByLeague}
+                        selectedDate={selectedDate}
+                        favoriteMatches={favoriteMatches}
+                    />
+                ) : (
+                    <>
+                      <FavoriteMatches
+                          selectedDate={selectedDate}
+                          favoriteMatches={favoriteMatches}
+                          userId={userId}
+                      />
+                      <AllMatches
+                          matchesByLeague={matchesByLeague}
+                          selectedDate={selectedDate}
+                          favoriteMatches={favoriteMatches}
+                          setFavoriteMatches={setFavoriteMatches}
+                          userId={userId}
+                      />
+                    </>
+                )}
               </div>
             </div>
           </div>

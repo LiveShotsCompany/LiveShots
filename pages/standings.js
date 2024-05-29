@@ -49,7 +49,7 @@ const Standings = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-start h-[460px] ml-20 mt-6 border-2 border-green-600 bg-white p-4 rounded-lg">
+    <div className="flex flex-col items-center justify-start h-[460px] ml-20 mt-6 border-2 border-green-600 bg-gray-200 p-4 rounded-lg">
       <div className="w-full">
         <select
           id="leagueDropdown"

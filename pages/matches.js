@@ -38,6 +38,7 @@ const Matches = () => {
     fetchMatches();
   }, []);
 
+  
   useEffect(() => {
     const fetchFavoriteMatches = async () => {
       try {
@@ -76,6 +77,7 @@ const Matches = () => {
     });
   });
 
+  // Generate the date button for to filter on matches
   const generateDateButtons = () => {
     const today = new Date();
     const startOfWeek = new Date(today);

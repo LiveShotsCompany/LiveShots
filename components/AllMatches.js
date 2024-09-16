@@ -4,6 +4,7 @@ import Link from "next/link";
 const AllMatches = ({ matchesByLeague, selectedDate, userId }) => {
   const [favoriteMatches, setFavoriteMatches] = useState([]);
 
+  // Fetch user's favorite matches when the component mounts or userId changes
   useEffect(() => {
     const fetchFavoriteMatches = async () => {
       try {
@@ -29,8 +30,10 @@ const AllMatches = ({ matchesByLeague, selectedDate, userId }) => {
     fetchFavoriteMatches();
   }, [userId]);
 
+  // Check if a match is favorited by the user
   const isMatchFavorited = (matchId) => favoriteMatches.includes(matchId);
 
+  // Toggle a match as favorite or remove it from favorites
   const handleToggleFavorite = async (matchId, homeTeam, awayTeam) => {
     try {
       if (isMatchFavorited(matchId)) {
@@ -48,7 +51,7 @@ const AllMatches = ({ matchesByLeague, selectedDate, userId }) => {
 
         // Remove matchId from favoriteMatches state
         setFavoriteMatches((prevState) =>
-          prevState.filter((id) => id !== matchId),
+            prevState.filter((id) => id !== matchId),
         );
       } else {
         const response = await fetch("/api/favorite", {
@@ -71,75 +74,73 @@ const AllMatches = ({ matchesByLeague, selectedDate, userId }) => {
   };
 
   return (
-    <div>
-      {Object.entries(matchesByLeague).map(([competitionId, matches]) => {
-        const matchesForSelectedDate = matches.filter((match) => {
-          const matchDate = new Date(match.date);
-          const formattedMatchDate = `${matchDate.getDate()}-${
-            matchDate.getMonth() + 1
-          }`;
-          return formattedMatchDate === selectedDate;
-        });
+      <div>
+        {Object.entries(matchesByLeague).map(([competitionId, matches]) => {
+          const matchesForSelectedDate = matches.filter((match) => {
+            const matchDate = new Date(match.date);
+            const formattedMatchDate = `${matchDate.getDate()}-${
+                matchDate.getMonth() + 1
+            }`;
+            return formattedMatchDate === selectedDate;
+          });
 
-        if (matchesForSelectedDate.length === 0) {
-          return null;
-        }
+          if (matchesForSelectedDate.length === 0) {
+            return null;
+          }
 
-        console.log(matchesForSelectedDate);
-
-        return (
-          <div className="mb-4 border-2 border-green-600" key={competitionId}>
-            <h2 className="text-base text-center bg-[#28d475] w-full text-white font-bold">
-              {matches[0].competitionName}
-            </h2>
-            {matchesForSelectedDate.map((match) => (
-              <ul
-                key={match.id}
-                className={`flex items-center bg-green-600 hover:bg-green-500 text-black text-sm border-b-4 border-green-500`}
-              >
-                <div className="flex flex-row items-center w-96 text-white font-bold justify-center space-x-8">
-                  <Link key={match.id} href={`/matches/${match.id}`}>
-                    <li className="flex items-center justify-center">
-                      {match.time.split(":").slice(0, 2).join(":")}
-                    </li>
-                  </Link>
-                  <Link key={match.id} href={`/matches/${match.id}`}>
-                    <li className="flex items-center justify-center">
-                      {match.teams && match.teams[0] && match.teams[0].name}
-                    </li>
-                    <li className="flex items-center justify-center">
-                      {match.teams && match.teams[1] && match.teams[1].name}
-                    </li>
-                  </Link>
-                  <li>
-                    <button
-                      className=""
-                      onClick={() =>
-                        handleToggleFavorite(
-                          match.id,
-                          match.teams[0].name,
-                          match.teams[1].name,
-                        )
-                      }
+          return (
+              <div className="mb-4 border-2 border-green-600" key={competitionId}>
+                <h2 className="text-base text-center bg-[#28d475] w-full text-white font-bold">
+                  {matches[0].competitionName}
+                </h2>
+                {matchesForSelectedDate.map((match) => (
+                    <ul
+                        key={match.id}
+                        className={`flex items-center bg-green-600 hover:bg-green-500 text-black text-sm border-b-4 border-green-500`}
                     >
-                      <img
-                        src={
-                          isMatchFavorited(match.id)
-                            ? "/favorite-1.svg"
-                            : "/favorite.svg"
-                        }
-                        alt="favorite"
-                        className="h-6"
-                      />
-                    </button>
-                  </li>
-                </div>
-              </ul>
-            ))}
-          </div>
-        );
-      })}
-    </div>
+                      <div className="flex flex-row items-center w-96 text-white font-bold justify-center space-x-8">
+                        <Link key={match.id} href={`/matches/${match.id}`}>
+                          <li className="flex items-center justify-center">
+                            {match.time.split(":").slice(0, 2).join(":")}
+                          </li>
+                        </Link>
+                        <Link key={match.id} href={`/matches/${match.id}`}>
+                          <li className="flex items-center justify-center">
+                            {match.teams && match.teams[0] && match.teams[0].name}
+                          </li>
+                          <li className="flex items-center justify-center">
+                            {match.teams && match.teams[1] && match.teams[1].name}
+                          </li>
+                        </Link>
+                        <li>
+                          <button
+                              className=""
+                              onClick={() =>
+                                  handleToggleFavorite(
+                                      match.id,
+                                      match.teams[0].name,
+                                      match.teams[1].name,
+                                  )
+                              }
+                          >
+                            <img
+                                src={
+                                  isMatchFavorited(match.id)
+                                      ? "/favorite-1.svg"
+                                      : "/favorite.svg"
+                                }
+                                alt="favorite"
+                                className="h-6"
+                            />
+                          </button>
+                        </li>
+                      </div>
+                    </ul>
+                ))}
+              </div>
+          );
+        })}
+      </div>
   );
 };
 
